@@ -21,13 +21,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,6 +60,14 @@ public class MainActivity extends AppCompatActivity {
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
+      switch (item.getItemId()) {
+          // We call explicitely the action because NavigationUI.onNavDestinationSelected don't take
+          // in consideration the popup configuration
+          case R.id.action_startFragment_to_loginFragment:
+              navController.navigate(R.id.action_startFragment_to_loginFragment);
+              return true;
+      }
+
     return NavigationUI.onNavDestinationSelected(item, navController)
         || super.onOptionsItemSelected(item);
   }

@@ -22,6 +22,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -31,7 +32,7 @@ import androidx.navigation.Navigation;
  */
 public class StartFragment extends Fragment {
 
-  private boolean logged = false;
+  private static boolean logged = false;
 
   public StartFragment() {
     // Required empty public constructor
@@ -42,10 +43,11 @@ public class StartFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
+    NavController navController = Navigation
+            .findNavController(getActivity(), R.id.nav_host_fragment);
     if (!logged) {
       logged = true;
-      NavController navController = Navigation
-          .findNavController(getActivity(), R.id.nav_host_fragment);
+
       navController.navigate(R.id.action_startFragment_to_loginFragment);
     }
 

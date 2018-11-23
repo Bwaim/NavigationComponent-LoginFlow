@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -57,9 +58,9 @@ public class LoginFragment extends Fragment {
     login.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        //navController.navigate(R.id.action_loginFragment_to_startFragment);
-        navController
-            .popBackStack(); // don't use it so that once logged you don't go back on the login screen
+          navController.navigate(R.id.action_loginFragment_to_startFragment);
+          // don't use it so that once logged you don't go back on the login screen
+          //navController.popBackStack();
       }
     });
   }
